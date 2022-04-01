@@ -1,4 +1,4 @@
-FROM redhat-openjdk-18/openjdk18-openshift
+FROM registry.access.redhat.com/ubi7/ubi
 
 LABEL io.k8s.description="Openoffice Image" \
       io.k8s.display-name="Openoffice Image" \
