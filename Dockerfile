@@ -12,10 +12,14 @@ RUN yum -y install wget java-11-openjdk && yum -y clean all && \
     rm -f Apache_OpenOffice_4.1.7_Linux_x86-64_install-rpm_en-US.tar.gz && \
     cd en-US/RPMS/ && \
     rpm -Uvh *.rpm && \
-    rpm -Uvih desktop-integration/openoffice4.1.7-redhat-menus-4.1.7-9800.noarch.rpm
+    rpm -Uvih desktop-integration/openoffice4.1.7-redhat-menus-4.1.7-9800.noarch.rpm && \
+    echo 'export HOME=/tmp' >> /init_wrapper.sh && \
+    echo '/bin/soffice -headless -nofirststartwizard -accept="socket,host=localhost,port=8100;urp;"' >> /init_wrapper.sh && \
+    chgrp 0 /init_wrapper.sh && \
+    chmod g+rwX /init_wrapper.sh
     
 # This default user is created in the openshift/base-centos7 image
 USER 1001
 
 # Set the default CMD for the image
-CMD /bin/soffice -headless -nofirststartwizard -accept="socket,host=localhost,port=8100;urp;"
+CMD /init_wrapper.sh
