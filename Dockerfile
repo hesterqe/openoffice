@@ -15,6 +15,7 @@ RUN yum -y install wget java-11-openjdk && yum -y clean all && \
     rpm -Uvih desktop-integration/openoffice4.1.7-redhat-menus-4.1.7-9800.noarch.rpm && \
     echo 'export HOME=/tmp' >> /init_wrapper.sh && \
     echo '/bin/soffice -headless -nofirststartwizard -accept="socket,host=localhost,port=8100;urp;"' >> /init_wrapper.sh && \
+    chmod 755 /init_wrapper.sh && \
     chgrp 0 /init_wrapper.sh && \
     chmod g+rwX /init_wrapper.sh
     
