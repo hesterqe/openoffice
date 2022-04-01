@@ -1,4 +1,4 @@
-FROM openjdk-11-rhel8
+FROM redhat-openjdk-18/openjdk18-openshift
 
 LABEL io.k8s.description="Openoffice Image" \
       io.k8s.display-name="Openoffice Image" \
