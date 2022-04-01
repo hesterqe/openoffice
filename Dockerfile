@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/openjdk/openjdk-11-rhel8
+FROM openjdk-11-rhel8
 
 LABEL io.k8s.description="Openoffice Image" \
       io.k8s.display-name="Openoffice Image" \
