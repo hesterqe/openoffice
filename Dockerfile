@@ -24,8 +24,10 @@ RUN yum -y install wget java-11-openjdk-devel && yum -y clean all && \
 RUN mkdir -p /tmp/client
 COPY testing /tmp/client/
 RUN javac -cp "/opt/openoffice4/program/classes/*" /tmp/client/OpenOfficeClient.java && \
-    chgrp 0 /tmp/client && \
-    chmod g+rwX /tmp/client
+    chmod -R 755 /init_wrapper.sh && \
+    chgrp -R 0 /tmp/client && \
+    chmod -R g+rwX /tmp/client
+# conversion command: java -cp "/tmp/client/:/opt/openoffice4/program/classes/*" OpenOfficeClient "uno:socket,host=localhost,port=8100;urp;StarOffice.ServiceManager" /tmp/client/files/ /tmp/client/files/
 # end temporary    
     
     
