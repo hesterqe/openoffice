@@ -19,6 +19,15 @@ RUN yum -y install wget java-11-openjdk-devel && yum -y clean all && \
     chgrp 0 /init_wrapper.sh && \
     chmod g+rwX /init_wrapper.sh
     
+
+# begin temporary, need to remove
+RUN mkdir -p /tmp/client
+COPY OpenOfficeClient.java /tmp/client/
+RUN chgrp 0 /tmp/client && \
+    chmod g+rwX /tmp/client
+# end temporary    
+    
+    
 # This default user is created in the openshift/base-centos7 image
 USER 1001
 
