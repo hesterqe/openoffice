@@ -6,7 +6,7 @@ LABEL io.k8s.description="Openoffice Image" \
 
 USER root
 
-RUN yum -y install wget java-11-openjdk && yum -y clean all && \
+RUN yum -y install wget java-11-openjdk-devel && yum -y clean all && \
     wget --no-check-certificate https://sourceforge.net/projects/openofficeorg.mirror/files/4.1.7/binaries/en-US/Apache_OpenOffice_4.1.7_Linux_x86-64_install-rpm_en-US.tar.gz && \
     tar xvf Apache_OpenOffice_4.1.7_Linux_x86-64_install-rpm_en-US.tar.gz && \
     rm -f Apache_OpenOffice_4.1.7_Linux_x86-64_install-rpm_en-US.tar.gz && \
