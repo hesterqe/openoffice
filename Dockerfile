@@ -1,6 +1,4 @@
 FROM registry.access.redhat.com/ubi7/ubi
-#FROM registry.redhat.io/rhscl/httpd-24-rhel7
-#FROM image-registry.openshift-image-registry.svc:5000/ibm-cos-plugin/roks
 
 LABEL io.k8s.description="Openoffice Image" \
       io.k8s.display-name="Openoffice Image" \
@@ -21,8 +19,8 @@ RUN yum -y install wget java-11-openjdk-devel && yum -y clean all && \
     chgrp 0 /init_wrapper.sh && \
     chmod g+rwX /init_wrapper.sh
     
-
-# begin temporary, need to remove
+# -----BEGIN TEMPORARY----- #
+# snippet will copy the test Java file (and compile it) along, with some test txt files for local testing
 RUN mkdir -p /tmp/client
 COPY testing /tmp/client/
 RUN javac -cp "/opt/openoffice4/program/classes/*" /tmp/client/OpenOfficeClient.java && \
@@ -30,7 +28,7 @@ RUN javac -cp "/opt/openoffice4/program/classes/*" /tmp/client/OpenOfficeClient.
     chgrp -R 0 /tmp/client && \
     chmod -R g+rwX /tmp/client
 # conversion command: java -cp "/tmp/client/:/opt/openoffice4/program/classes/*" OpenOfficeClient "uno:socket,host=localhost,port=8100;urp;StarOffice.ServiceManager" /tmp/client/files/ /tmp/client/files/
-# end temporary    
+# -----END TEMPORARY----- # 
     
     
 # This default user is created in the openshift/base-centos7 image
