@@ -1,5 +1,6 @@
 #FROM registry.access.redhat.com/ubi7/ubi
-FROM registry.redhat.io/rhscl/httpd-24-rhel7
+#FROM registry.redhat.io/rhscl/httpd-24-rhel7
+FROM image-registry.openshift-image-registry.svc:5000/ibm-cos-plugin/roks
 
 LABEL io.k8s.description="Openoffice Image" \
       io.k8s.display-name="Openoffice Image" \
