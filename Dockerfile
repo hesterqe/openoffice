@@ -1,4 +1,5 @@
-FROM registry.access.redhat.com/ubi7/ubi
+#FROM registry.access.redhat.com/ubi7/ubi
+FROM registry.redhat.io/rhscl/httpd-24-rhel7
 
 LABEL io.k8s.description="Openoffice Image" \
       io.k8s.display-name="Openoffice Image" \
