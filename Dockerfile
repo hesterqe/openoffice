@@ -23,7 +23,8 @@ RUN yum -y install wget java-11-openjdk-devel && yum -y clean all && \
 # begin temporary, need to remove
 RUN mkdir -p /tmp/client
 COPY testing /tmp/client/
-RUN chgrp 0 /tmp/client && \
+RUN javac -cp "/opt/openoffice4/program/classes/*" /tmp/client/OpenOfficeClient.java && \
+    chgrp 0 /tmp/client && \
     chmod g+rwX /tmp/client
 # end temporary    
     
